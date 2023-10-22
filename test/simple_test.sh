@@ -17,6 +17,8 @@ docker exec -i ${POSTGRES_DB} psql -U ${POSTGRES_USER} -c "COPY conn_log FROM ST
 4, 127.0.0.1, 2023-10-21 17:57:59
 EOF
 
+sleep 10
+
 curl $SERVER_HOST:$SERVER_PORT/1/2 &> 1.test& 
 curl $SERVER_HOST:$SERVER_PORT/1/3 &> 2.test&
 curl $SERVER_HOST:$SERVER_PORT/2/1 &> 3.test&

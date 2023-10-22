@@ -10,6 +10,8 @@ docker exec -t ${POSTGRES_DB} psql -U ${POSTGRES_USER} -c "TRUNCATE conn_log"
 docker exec -i ${POSTGRES_DB} psql -U ${POSTGRES_USER} \
  -c "COPY conn_log FROM STDIN WITH (FORMAT csv);" < $my_dir/rows.csv
 
+sleep 10
+
 curl $SERVER_HOST:$SERVER_PORT/1/2 &> 1.test& 
 curl $SERVER_HOST:$SERVER_PORT/1/3 &> 2.test&
 curl $SERVER_HOST:$SERVER_PORT/2/1 &> 3.test&
